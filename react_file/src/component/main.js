@@ -21,7 +21,7 @@ export let Main = () => {
   const [correct, setCorrect] = useState(null);
   const [submit, setSubmit] = useState(false);
   const [start, setStart] = useState(false);
-  const [countwrong, setCountWrong] = useState(0);
+  const [countright, setCountRight] = useState(0);
   const [wrong, setWrong] = useState(true);
   const [load, setLoad] = useState(false);
   const [questiontype, setQuestionType] = useState(
@@ -116,12 +116,18 @@ export let Main = () => {
       chose.forEach((ele, ind) => {
         if (!keyy.includes(ele.textContent)) {
           ele.classList.add("wrong");
-          setCountWrong((prev) => prev + 1);
         }
       });
-    } else {
-      setCountWrong(5);
     }
+    const correctEle = [
+      right1.current,
+      right2.current,
+      right3.current,
+      right4.current,
+      right5.current,
+    ];
+    let correctNo = correctEle.filter((ele) => ele.classList.length === 2);
+    setCountRight(correctNo.length);
     setSubmit((prev) => !prev);
   };
   useEffect(() => {
@@ -143,9 +149,10 @@ export let Main = () => {
     let wrong = document.querySelectorAll(".clicked");
     if (wrong.length > 0) {
       wrong.forEach((ele) => {
-        ele.classList.remove("clicked");
+        ele.classList.remove("wrong");
       });
     }
+    setCountRight(0);
     setStart((prev) => !prev);
     setSubmit((prev) => !prev);
   };
@@ -214,7 +221,7 @@ export let Main = () => {
         new: newQuiz,
         done: submit,
         checkWrong: wrong,
-        wrong: countwrong,
+        right: countright,
         load: load,
       }}
     >
@@ -230,4 +237,3 @@ export let Main = () => {
     </Questions.Provider>
   );
 };
-console.log("wtf");
