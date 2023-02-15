@@ -62,6 +62,7 @@ export let Main = () => {
       setCorrect(correctArr);
       setQuestionGroups(groups);
       changeLoad();
+      setCountWrong(0);
     };
     changeLoad();
     getQust();
@@ -140,10 +141,10 @@ export let Main = () => {
         ele.classList.remove("clicked");
       });
     }
-    let wrong = document.querySelectorAll(".clicked");
+    let wrong = document.querySelectorAll(".wrong");
     if (wrong.length > 0) {
       wrong.forEach((ele) => {
-        ele.classList.remove("clicked");
+        ele.classList.remove("wrong");
       });
     }
     setStart((prev) => !prev);
@@ -230,4 +231,3 @@ export let Main = () => {
     </Questions.Provider>
   );
 };
-console.log("wtf");
