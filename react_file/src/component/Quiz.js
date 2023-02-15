@@ -40,7 +40,6 @@ export let Quiz = () => {
       />
     );
   });
-  const fail = 5 - questions.wrong;
   return (
     <div className="quiz_main">
       {questions.load ? (
@@ -56,7 +55,9 @@ export let Quiz = () => {
       ) : null}
       <div className="quiz_body">{Quizzical}</div>
       <div className="score">
-        {questions.checkWrong ? <h1>You score {fail} Of 5</h1> : null}
+        {questions.checkWrong ? (
+          <h1>You score {questions.right} Of 5</h1>
+        ) : null}
         {!questions.done ? (
           <button onClick={questions.submit} id="end">
             Submit Answers

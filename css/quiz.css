@@ -390,5 +390,6 @@ body {
   }
   .load {
     height: calc(100vh + 40px);
+    font-size: 30px;
   }
 }
