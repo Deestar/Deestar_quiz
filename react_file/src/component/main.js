@@ -42,7 +42,7 @@ export let Main = () => {
           0,
           ele.correct_answer
         );
-        console.log(ele.question);
+        // console.log(ele.question);
         return {
           group: ind + 1,
           isSelected: false,
