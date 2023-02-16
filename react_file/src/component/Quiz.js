@@ -17,6 +17,7 @@ export let Quiz = () => {
         opt2={ele.opt2}
         opt3={ele.opt3}
         opt4={ele.opt4}
+        click={questions.done}
         ref1={
           ele.opt1 === questions.prop3[ind][getCorrect]
             ? questions[`right${ind + 1}`]

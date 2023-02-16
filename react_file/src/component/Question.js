@@ -6,28 +6,36 @@ export let Question = (prop) => {
       <h2>{prop.question}</h2>
       <div className="quiz_btn">
         <button
-          onClick={(event) => prop.changeClass(event, prop.name)}
+          onClick={
+            !prop.click ? (event) => prop.changeClass(event, prop.name) : null
+          }
           name={prop.name}
           ref={prop.ref1}
         >
           {prop.opt1}
         </button>
         <button
-          onClick={(event) => prop.changeClass(event, prop.name)}
+          onClick={
+            !prop.click ? (event) => prop.changeClass(event, prop.name) : null
+          }
           name={prop.name}
           ref={prop.ref2}
         >
           {prop.opt2}
         </button>
         <button
-          onClick={(event) => prop.changeClass(event, prop.name)}
+          onClick={
+            !prop.click ? (event) => prop.changeClass(event, prop.name) : null
+          }
           name={prop.name}
           ref={prop.ref3}
         >
           {prop.opt3}
         </button>
         <button
-          onClick={(event) => prop.changeClass(event, prop.name)}
+          onClick={
+            !prop.click ? (event) => prop.changeClass(event, prop.name) : null
+          }
           name={prop.name}
           ref={prop.ref4}
         >
