@@ -25,7 +25,7 @@ export let Main = () => {
   const [wrong, setWrong] = useState(true);
   const [load, setLoad] = useState(false);
   const [questiontype, setQuestionType] = useState(
-    "https://opentdb.com/api.php?amount=5&category=9&difficulty=medium&type=multiple"
+    "https://opentdb.com/api.php?amount=5&category=17&difficulty=medium&type=multiple"
   );
   const difficulty = useRef("medium");
   //creating a context component to be passed to sub-component component
@@ -47,7 +47,7 @@ export let Main = () => {
           group: ind + 1,
           isSelected: false,
           key: ind,
-          question: ele.question,
+          question: decodeURIComponent(ele.question),
           opt1: ele.incorrect_answers[0],
           opt2: ele.incorrect_answers[1],
           opt3: ele.incorrect_answers[2],
