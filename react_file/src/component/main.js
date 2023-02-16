@@ -32,7 +32,10 @@ export let Main = () => {
   let startQuiz = useCallback(async () => {
     let getQust = async () => {
       let question = await fetch(
-        questiontype + "&difficulty=" + difficulty.current + "&type=multiple"
+        questiontype +
+          "&difficulty=" +
+          difficulty.current +
+          "&type=multiple&encode=base64"
       );
       let response = await question.json();
       //for each object from the fetch response array we want to place the correct answer at a random spot in the answer array then create an array of object
@@ -42,21 +45,20 @@ export let Main = () => {
           0,
           ele.correct_answer
         );
-        // console.log(ele.question);
         return {
           group: ind + 1,
           isSelected: false,
           key: ind,
-          question: decodeURIComponent(ele.question),
-          opt1: ele.incorrect_answers[0],
-          opt2: ele.incorrect_answers[1],
-          opt3: ele.incorrect_answers[2],
-          opt4: ele.incorrect_answers[3],
+          question: atob(ele.question),
+          opt1: atob(ele.incorrect_answers[0]),
+          opt2: atob(ele.incorrect_answers[1]),
+          opt3: atob(ele.incorrect_answers[2]),
+          opt4: atob(ele.incorrect_answers[3]),
         };
       });
       //set a state for corect options and group no
       let correctArr = response.results.map((ele, ind) => ({
-        [`group${ind + 1}`]: ele.correct_answer,
+        [`group${ind + 1}`]: atob(ele.correct_answer),
       }));
 
       setCorrect(correctArr);
